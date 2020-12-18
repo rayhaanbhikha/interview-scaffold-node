@@ -1,0 +1,26 @@
+{
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "globals": {
+    "ts-jest": {
+      "diagnostics": false
+    }
+  },
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "__tests__/mock*.*"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/jest.setup.ts"
+  ],
+  "moduleNameMapper": {
+    "@/(.*)$": "<rootDir>/src/$1"
+  }
+}

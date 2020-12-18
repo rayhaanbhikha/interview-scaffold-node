@@ -1,0 +1,26 @@
+version: '3.7'
+
+services: 
+  db:
+    image: postgres:10.7-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - PG_PASSWORD=postgres
+
+  pgadmin:
+    image: dpage/pgadmin4:4.8
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    volumes:
+      - pgadmin_settings:/var/lib/pgadmin
+      - ./pg_admin/servers.json:/pgadmin4/servers.json
+    ports:
+      - 3004:80
+    depends_on:
+      - db
+    logging:
+      driver: none
+volumes:
+  pgadmin_settings:
